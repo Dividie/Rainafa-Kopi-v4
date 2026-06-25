@@ -17,22 +17,20 @@ Implementasi konsep **Object-Oriented Programming (OOP)** dan berbagai **Struktu
 ## 1. Object-Oriented Programming (OOP)
 
 ###  Deskripsi & Penerapan
-Pendekatan OOP digunakan untuk memetakan entitas dunia nyata (bisnis proses kafe) menjadi komponen digital yang aman dan terstruktur. Penerapan utamanya meliputi:
-* **Encapsulation (Pembungkusan Data):** Menyembunyikan atribut sensitif dengan hak akses `private` dan menyediakannya melalui fungsi `getter` dan `setter`.
-* **Inheritance (Pewarisan):** Memanfaatkan kelas bawaan Java Swing (seperti `JPanel`, `JFrame`) untuk membangun komponen *User Interface* custom tanpa menulis kode dari nol.
+Pendekatan OOP digunakan untuk fondasi utama program ini. Kita membungkus data dan fungsi ke dalam objek nyata.
 
 ###  (model/Pesanan.java)
 ```java
 package model;
 
 public class Pesanan {
-    // Encapsulation: Atribut diatur private agar tidak dimodifikasi langsung dari luar
+    // 1. ENCAPSULATION: Menyembunyikan data dengan akses private
     private String id;
     private String rincianMenu;
     private double totalHarga;
     private String status;
 
-    // Constructor untuk inisialisasi objek pesanan baru
+    // Constructor untuk inisialisasi objek
     public Pesanan(String id, String rincianMenu, double totalHarga, String status) {
         this.id = id;
         this.rincianMenu = rincianMenu;
@@ -40,15 +38,13 @@ public class Pesanan {
         this.status = status;
     }
 
-    // Akses data secara aman melalui Getter
+    // Getter dan Setter untuk mengakses data secara aman
     public String getId() { return id; }
     public String getRincianMenu() { return rincianMenu; }
     public double getTotalHarga() { return totalHarga; }
     public String getStatus() { return status; }
 }
-
 ```
-
 ---
 
 ## 2. Array / ArrayList
