@@ -1,6 +1,6 @@
-M4553|Rainafa|Signature Coffe|10000|7
-M8007|Americano|Signature Coffe|8000|28
-M3166|matcha|Non-Coffee|12000|20
+M4553|Rainafa|Signature Coffe|10000|6
+M8007|Americano|Signature Coffe|8000|26
+M3166|matcha|Non-Coffee|12000|17
 M4287|Cokelat|Non-Coffee|12000|22
 M4075|Chocomint|Non-Coffee|12000|24
 M570|Butterscout|Coffee|12000|24
