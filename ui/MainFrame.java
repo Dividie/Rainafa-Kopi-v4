@@ -103,10 +103,10 @@ public class MainFrame extends JFrame {
             if (currentRole.equals("Admin")) {
                 btn.setVisible(true); // Admin memiliki akses mutlak ke semua fitur
             } else if (currentRole.equals("Kasir")) {
-                if (menuName.equals("Menu") || menuName.equals("Kasir") || menuName.equals("Antrian")) {
+                if (menuName.equals("Dashboard") || menuName.equals("Kasir") || menuName.equals("Antrian")  || menuName.equals("History")) {
                     btn.setVisible(true);
                 } else {
-                    btn.setVisible(false); // Sembunyikan Dashboard, History, dan Manajemen Akun dari Kasir
+                    btn.setVisible(false); // Sembunyikan Menu dan Manajemen Akun dari Kasir
                 }
             }
         }

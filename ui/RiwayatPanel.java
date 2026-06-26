@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * Kelas RiwayatPanel mengelola tampilan tabel log arsip seluruh data transaksi penjualan.
- * Menyediakan komponen pencarian teks (Real-time Filter) dan filter kategori status (Lunas / Batal).
+ * Menyediakan komponen pencarian teks (Real-time Filter).
  */
 public class RiwayatPanel extends JPanel {
     private JTable tabel;
@@ -25,7 +25,6 @@ public class RiwayatPanel extends JPanel {
     private TableRowSorter<DefaultTableModel> sorter; // Penanggung jawab filter baris tabel
     
     private JTextField txtCari;
-    private JComboBox<String> cbFilterStatus;
 
     public RiwayatPanel() {
         setLayout(new BorderLayout(20, 20));
@@ -41,17 +40,7 @@ public class RiwayatPanel extends JPanel {
         kananHeaderPanel.setOpaque(false);
         kananHeaderPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
 
-        JLabel lblFilter = new JLabel("Filter:");
-        lblFilter.setFont(Theme.FONT_BODY_BOLD);
-        lblFilter.setForeground(Theme.TEXT_MUTED);
-        
-        cbFilterStatus = new JComboBox<>(new String[]{"Semua", "Lunas", "Batal"});
-        cbFilterStatus.setPreferredSize(new Dimension(110, 40));
-        cbFilterStatus.setBackground(Color.WHITE);
-        cbFilterStatus.setFont(Theme.FONT_BODY);
-        cbFilterStatus.addActionListener(e -> filterData());
-
-        JLabel lblCari = new JLabel("🔍 Cari:");
+        JLabel lblCari = new JLabel("Cari:");
         lblCari.setFont(Theme.FONT_BODY_BOLD);
         lblCari.setForeground(Theme.TEXT_MUTED);
         
@@ -65,8 +54,6 @@ public class RiwayatPanel extends JPanel {
             public void changedUpdate(DocumentEvent e) { filterData(); }
         });
         
-        kananHeaderPanel.add(lblFilter);
-        kananHeaderPanel.add(cbFilterStatus);
         kananHeaderPanel.add(lblCari);
         kananHeaderPanel.add(txtCari);
         
@@ -158,28 +145,15 @@ public class RiwayatPanel extends JPanel {
     }
 
     /**
-     * Memproses logika penyaringan gabungan (AndFilter) antara keyword teks dan JComboBox.
+     * Memproses logika penyaringan data berdasarkan keyword teks di kolom Cari.
      */
     private void filterData() {
         String keyword = txtCari.getText().trim();
-        String statusFilter = (String) cbFilterStatus.getSelectedItem();
         
-        List<RowFilter<Object, Object>> filters = new ArrayList<>();
-        
-        // Menambahkan filter teks jika tidak kosong (case-insensitive)
-        if (!keyword.isEmpty()) {
-            filters.add(RowFilter.regexFilter("(?i)" + keyword));
-        }
-        
-        // Menambahkan filter status pada kolom ke-4 jika bernilai selain "Semua"
-        if (!statusFilter.equals("Semua")) {
-            filters.add(RowFilter.regexFilter("(?i)^" + statusFilter + "$", 4)); 
-        }
-        
-        if (filters.isEmpty()) {
-            sorter.setRowFilter(null); // Membersihkan filter jika kosong
+        if (keyword.isEmpty()) {
+            sorter.setRowFilter(null); // Membersihkan filter jika kolom pencarian kosong
         } else {
-            sorter.setRowFilter(RowFilter.andFilter(filters));
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + keyword)); // Filter case-insensitive
         }
     }
 

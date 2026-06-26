@@ -48,7 +48,7 @@ public class ManajemenMenuPanel extends JPanel {
         searchPanel.setOpaque(false);
         searchPanel.setBorder(new EmptyBorder(10, 0, 0, 0)); 
         
-        JLabel lblCari = new JLabel("🔍 Cari:");
+        JLabel lblCari = new JLabel("Cari:");
         lblCari.setFont(Theme.FONT_BODY_BOLD);
         lblCari.setForeground(Theme.TEXT_MUTED);
         

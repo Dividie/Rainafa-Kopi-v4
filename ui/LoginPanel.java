@@ -151,7 +151,7 @@ public class LoginPanel extends JPanel {
         p.add(txtP); p.add(Box.createVerticalStrut(15));
 
         p.add(Theme.fieldLabel("Hak Akses (Role)"));
-        JComboBox<String> cbRole = new JComboBox<>(new String[]{"Kasir", "Admin"});
+        JComboBox<String> cbRole = new JComboBox<>(new String[]{"Kasir"});
         cbRole.setMaximumSize(new Dimension(320, 40)); cbRole.setBackground(Color.WHITE);
         p.add(cbRole); p.add(Box.createVerticalStrut(30));
 
